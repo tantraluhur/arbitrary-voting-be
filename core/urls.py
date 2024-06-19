@@ -19,3 +19,4 @@ urlpatterns = [
     path('backend/admin', admin.site.urls),
     path('api/v1/auth/', include('authentication.urls')),
 ]
+ 
