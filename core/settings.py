@@ -26,10 +26,10 @@ env = environ.Env(
 env_file_path = os.path.join(BASE_DIR, '.env')
 environ.Env.read_env(env_file_path)
 
-DEBUG = env('DEBUG')
-SECRET_KEY = env('SECRET_KEY')
+DEBUG = True
+SECRET_KEY = "secret"
 
-ALLOWED_HOSTS = env('ALLOWED_HOSTS')
+ALLOWED_HOSTS = "*"
 
 # CORS CONFIG #
 CORS_ORIGIN_ALLOW_ALL = True
@@ -101,8 +101,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres.bultcahjiiwnirhmlqwp',
+        'PASSWORD': 'iSq7xDcv0LspE5Wb',
+        'HOST': 'aws-0-ap-southeast-1.pooler.supabase.com',
+        'PORT': '5432',
     }
 }
 
