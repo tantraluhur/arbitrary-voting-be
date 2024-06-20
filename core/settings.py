@@ -61,6 +61,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'authentication',
+    'participant',
+    'candidate'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -133,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Dhaka'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -176,7 +178,7 @@ SIMPLE_JWT = {
     'AUDIENCE': None,
     'ISSUER': None,
 
-    'AUTH_HEADER_TYPES': ('SHOP',),
+    'AUTH_HEADER_TYPES': ('BEARER',),
     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
     'USER_ID_FIELD': 'id',
     'USER_ID_CLAIM': 'user_id',

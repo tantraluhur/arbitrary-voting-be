@@ -26,4 +26,4 @@ admin.site.register(AuthUser, CustomUserAdmin)
 
 admin.site.site_header = "Backend"
 admin.site.site_title = "Backend Admin"
-admin.site.index_title = "BoilerPlate"
+admin.site.index_title = "Admin"
