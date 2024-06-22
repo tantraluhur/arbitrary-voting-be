@@ -4,6 +4,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 
+from participant.models import *
 
 class UserManager(BaseUserManager):
     def create_user(self, password, phone_number, **kwargs):
@@ -38,6 +39,7 @@ class AuthUser(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=50, null=True)
     email = models.EmailField(_('email address'), null=True, blank=True)
     phone_number = models.CharField(max_length=15, unique=True, null=True)
+    participant = models.ForeignKey(Participant, on_delete=models.CASCADE, null=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)

@@ -9,43 +9,42 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ('candidate', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='CandidateSimulation',
+            name='Category',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('nama', models.CharField(max_length=120)),
             ],
         ),
         migrations.CreateModel(
-            name='NationalPoliticalParty',
+            name='CategorySimulation',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('nama', models.CharField(max_length=120)),
             ],
         ),
         migrations.CreateModel(
-            name='PoliticalParty',
+            name='InformationSimulation',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nama', models.CharField(max_length=120)),
+                ('headline', models.CharField(max_length=255)),
+                ('detail', models.TextField()),
+                ('kandidat', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='candidate.candidatesimulation')),
+                ('kategori', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='information.categorysimulation')),
             ],
         ),
         migrations.CreateModel(
-            name='RegionPoliticalParty',
+            name='Information',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nama', models.CharField(max_length=120)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Candidate',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nama', models.CharField(max_length=120)),
-                ('partai_politik', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='candidate.politicalparty')),
+                ('headline', models.CharField(max_length=255)),
+                ('detail', models.TextField()),
+                ('candidate', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='candidate.candidate')),
+                ('kategori', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='information.category')),
             ],
         ),
     ]

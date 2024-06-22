@@ -3,7 +3,5 @@ from participant.views import *
 
 
 urlpatterns = [
-
     path('', ParticipantView.as_view()),
-
 ]
