@@ -11,4 +11,5 @@ class SubmitRecordSerializer(serializers.Serializer) :
     kandidat = serializers.CharField()
     kategori = serializers.CharField()
     partai = serializers.CharField(required=False)
+    durasi = serializers.IntegerField()
 

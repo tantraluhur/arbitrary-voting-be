@@ -8,6 +8,7 @@ class RecordProporsional(models.Model) :
     kandidat = models.CharField(max_length=120)
     partai = models.CharField(max_length=120)
     kategori = models.CharField(max_length=120)
+    durasi = models.IntegerField(null=True, blank=True)
 
 class RecordDistrict(models.Model) :
     participant = models.ForeignKey(Participant, on_delete=models.CASCADE)
@@ -15,6 +16,7 @@ class RecordDistrict(models.Model) :
     kandidat = models.CharField(max_length=120)
     partai = models.CharField(max_length=120)
     kategori = models.CharField(max_length=120)
+    durasi = models.IntegerField(null=True, blank=True)
 
 #for simulation
 class RecordSimulation(models.Model) :
@@ -22,3 +24,4 @@ class RecordSimulation(models.Model) :
     inisial = models.CharField(max_length=120)
     kandidat = models.CharField(max_length=120)
     kategori = models.CharField(max_length=120)
+    durasi = models.IntegerField(null=True, blank=True)
