@@ -26,10 +26,10 @@ env = environ.Env(
 env_file_path = os.path.join(BASE_DIR, '.env')
 environ.Env.read_env(env_file_path)
 
-DEBUG = True
-SECRET_KEY = "secret"
+DEBUG = env('DEBUG')
+SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = "*"
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 # CORS CONFIG #
 CORS_ORIGIN_ALLOW_ALL = True
@@ -70,9 +70,9 @@ LOCAL_APPS = [
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
