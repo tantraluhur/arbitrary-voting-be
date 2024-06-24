@@ -12,7 +12,7 @@ class Participant(models.Model) :
         def choices(cls):
             return [(item.value, item.name) for item in cls]
     
-    inisial = models.CharField(max_length=1)
+    inisial = models.CharField(max_length=120)
     jenis_kelamin = models.CharField(max_length=1, choices=JenisKelamin.choices())
     usia = models.IntegerField()
     partai_nasional = models.CharField(max_length=120)

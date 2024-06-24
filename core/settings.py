@@ -31,6 +31,12 @@ SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
+from corsheaders.defaults import default_headers
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "*",
+]
+
 # CORS CONFIG #
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_METHODS = (

@@ -34,7 +34,7 @@ class InformationService(ABC):
             }
             return response 
         
-        if(params == "disctrict") :
+        if(params == "district") :
             kategori_list = Category.objects.all()
             info_list = Information.objects.filter(kandidat__district=True).order_by('?')
             response = {
