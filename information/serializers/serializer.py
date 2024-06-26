@@ -36,3 +36,8 @@ class ResponseSerializer(serializers.Serializer) :
     kategori = CategorySimulationSerializer(many=True)
     kandidat = InformationSimulationSerializer(many=True)
 
+class CategorySerializer(serializers.ModelSerializer) :
+
+    class Meta :
+        model = CategorySimulation
+        fields = "__all__" 

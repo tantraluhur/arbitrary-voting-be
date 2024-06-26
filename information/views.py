@@ -26,7 +26,24 @@ class SimulationInformationView(APIView):
             return Response(prepare_error_response(str(e)), e.status_code)
         except Exception as e :
             return Response(prepare_error_response(str(e)), status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
 
+class CategoryView(APIView) :
+    permission_classes = [IsAuthenticated]
+
+    def __init__(self) :
+        self.serializer = CategorySerializer
+        self.service = InformationService
+    
+    def get(self, request) :
+        try :
+            kategori = self.service.get_category(request)
+            serializer_data = self.serializer(kategori).data
+            return Response(prepare_success_response(serializer_data), status.HTTP_200_OK)
+        except APIException as e :
+            return Response(prepare_error_response(str(e)), e.status_code)
+        except Exception as e :
+            return Response(prepare_error_response(str(e)), status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 

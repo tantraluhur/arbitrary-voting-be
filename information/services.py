@@ -41,6 +41,22 @@ class InformationService(ABC):
                 "kategori" : kategori_list,
                 "kandidat" : info_list
             }
-            return response 
+            return response
+        
+    @classmethod
+    def get_category(cls, request) :
+        params = request.GET.get("type", None)
+
+        if not params :
+            raise BadRequestException("Query Params cannot be None.")
+        
+        params = params.lower()
+        if(params == "simulation") :
+            kategori_list = CategorySimulation.objects.all()
+            return kategori_list
+        
+        else :
+            kategori_list = Category.objects.all()
+            return kategori_list
 
 
