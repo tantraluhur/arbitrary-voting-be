@@ -29,7 +29,6 @@ class CandidateView(APIView):
             return Response(prepare_error_response(str(e)), status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class RegionPoliticalView(APIView) :
-    permission_classes = [IsAuthenticated, ]
 
     def __init__(self):
         super(RegionPoliticalView, self).__init__()
@@ -41,7 +40,6 @@ class RegionPoliticalView(APIView) :
         return Response(prepare_success_response(serializer_data), status.HTTP_200_OK)
 
 class NationalPoliticalView(APIView) :
-    permission_classes = [IsAuthenticated, ]
 
     def __init__(self):
         super(NationalPoliticalView, self).__init__()
