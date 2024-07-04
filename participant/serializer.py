@@ -23,3 +23,5 @@ class UpdateParticipantSerializer(serializers.Serializer) :
     final_answer_simulation = serializers.CharField(required=False)
     final_answer = serializers.CharField(required=False)
 
+    participant_question_answer = serializers.ListField()
+

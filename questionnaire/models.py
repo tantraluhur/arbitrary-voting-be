@@ -14,3 +14,6 @@ class Quistionnaire(models.Model) :
     type = models.CharField(max_length=12, choices=Type.choices())
     scale = models.IntegerField(null=True, blank=True)
 
+    def __str__(self) :
+        return f"{self.question} - {self.type}"
+

@@ -7,24 +7,21 @@ from rest_framework.views import APIView
 from applibs.response import prepare_success_response, prepare_error_response, serializer_error_response
 from commons.middlewares.exception import APIException
 
-from record.serializers.simulation_serializer import *
-from record.services import *
+from questionnaire.service import *
+from questionnaire.serializer import *
 
 class QuestionnaireView(APIView):
     permission_classes = [IsAuthenticated, ]
     def __init__(self):
         super(QuestionnaireView, self).__init__()
-        self.serializer = RecordSimulationSerializer
-        self.submit_serializer = SubmitRecordSerializer
-        self.service = RecordSimulationService
+        self.serializer = QustionSerializer
+        self.service = QustionService
     
-    def post(self, request) :
+    def get(self, request) :
         try :
-            serializer = self.submit_serializer(data=request.data)
-            if(not serializer.is_valid()) :
-                return Response(serializer_error_response(serializer.errors), status.HTTP_400_BAD_REQUEST)
-            record = self.service.submit_record(request, **serializer.data)
-            return Response(prepare_success_response("Record saved."), status.HTTP_201_CREATED)
+            question = self.service.get_all_question()
+            serializer_data = self.serializer(question, many=True).data
+            return Response(prepare_success_response(serializer_data), status.HTTP_200_OK)
         except APIException as e :
             return Response(prepare_error_response(str(e)), e.status_code)
         except Exception as e :

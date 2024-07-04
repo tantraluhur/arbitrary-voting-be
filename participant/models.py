@@ -30,3 +30,5 @@ class Participant(models.Model) :
     end_date = models.DateTimeField(null=True, blank=True)
     final_answer = models.CharField(max_length=120, null=True, blank=True)
 
+    participant_question_answer = models.JSONField(null=True, blank=True)
+
