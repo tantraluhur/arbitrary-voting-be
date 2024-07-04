@@ -39,5 +39,12 @@ class ResponseSerializer(serializers.Serializer) :
 class CategorySerializer(serializers.ModelSerializer) :
 
     class Meta :
-        model = CategorySimulation
+        model = Category
         fields = "__all__" 
+
+class TimeLimitSerializer(serializers.Serializer) :
+    time = serializers.IntegerField()
+
+
+class AutoNextSerializer(serializers.Serializer) :
+    auto = serializers.BooleanField()

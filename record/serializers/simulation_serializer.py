@@ -13,3 +13,7 @@ class SubmitRecordSerializer(serializers.Serializer) :
     partai = serializers.CharField(required=False)
     durasi = serializers.IntegerField()
 
+class DurationCategoryRecordSerializer(serializers.Serializer) :
+    kategori = serializers.CharField()
+    durasi = serializers.IntegerField()
+

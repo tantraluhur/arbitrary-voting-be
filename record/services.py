@@ -32,3 +32,16 @@ class RecordSimulationService(ABC):
         if(params == "district") :
             record = RecordDistrict.objects.create(**data)
             return record
+        
+    @classmethod
+    def submit_duration_category(cls, **data) :
+        kategori = data.get("kategori")
+        duration = data.get("durasi")
+        duration_object = DurationCategoryRecord.objects.filter(kategori=kategori).first()
+
+        if(not duration_object) :
+            duration_object = DurationCategoryRecord.objects.create(kategori=kategori, duration=duration)
+            return
+        duration += duration_object.duration
+        duration_object.duration = duration
+        duration_object.save()

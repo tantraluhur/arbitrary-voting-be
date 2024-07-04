@@ -8,3 +8,9 @@ admin.site.register(CategorySimulation)
 
 admin.site.register(Category)
 admin.site.register(Information)
+
+admin.site.register(TimeLimit)
+admin.site.register(TimeLimitSimulation)
+
+admin.site.register(AutoNext)
+admin.site.register(AutoNextSimulation)

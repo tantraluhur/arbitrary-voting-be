@@ -45,10 +45,7 @@ class InformationService(ABC):
         
     @classmethod
     def get_category(cls, request) :
-        params = request.GET.get("type", None)
-
-        if not params :
-            raise BadRequestException("Query Params cannot be None.")
+        params = request.GET.get("type", '')
         
         params = params.lower()
         if(params == "simulation") :
@@ -58,5 +55,47 @@ class InformationService(ABC):
         else :
             kategori_list = Category.objects.all()
             return kategori_list
-
+        
+    @classmethod
+    def get_time_limt(cls, request) :
+        params = request.GET.get("type", '')
+        
+        params = params.lower()
+        if(params == "simulation") :
+            time_limit = TimeLimitSimulation.objects.first()
+            if(not time_limit) :
+                return {
+                    "time" : 15
+                }
+            return time_limit
+        
+        else :
+            time_limit = TimeLimit.objects.first()
+            if(not time_limit) :
+                return {
+                    "time" : 15
+                }
+            return time_limit
+        
+    @classmethod
+    def get_auto_next(cls, request) :
+        params = request.GET.get("type", '')
+        
+        params = params.lower()
+        if(params == "simulation") :
+            auto_next = AutoNextSimulation.objects.first()
+            if(not auto_next) :
+                return {
+                    "auto" : True
+                }
+            return auto_next
+        
+        else :
+            auto_next = AutoNext.objects.first()
+            if(not auto_next) :
+                return {
+                    "auto" : True
+                }
+            return auto_next
+        
 

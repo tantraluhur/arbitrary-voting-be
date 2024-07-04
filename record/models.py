@@ -18,6 +18,10 @@ class RecordDistrict(models.Model) :
     kategori = models.CharField(max_length=120)
     durasi = models.IntegerField(null=True, blank=True)
 
+class DurationCategoryRecord(models.Model) :
+    kategori = models.CharField(max_length=120)
+    duration = models.IntegerField()
+
 #for simulation
 class RecordSimulation(models.Model) :
     participant = models.ForeignKey(Participant, on_delete=models.CASCADE)

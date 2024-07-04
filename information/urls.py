@@ -3,5 +3,9 @@ from information.views import *
 
 
 urlpatterns = [
-    path('', SimulationInformationView.as_view()),
+    path('', InformationView.as_view()),
+    path('category/', CategoryView.as_view()),
+    path('time-limit/', TimeLimitView.as_view()),
+    path('auto-next/', AutoNextView.as_view()),
+
 ]
