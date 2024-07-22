@@ -44,7 +44,7 @@ class RecordDurationView(APIView) :
             serializer = self.serializer(data=request.data)
             if(not serializer.is_valid()) :
                 return Response(serializer_error_response(serializer.errors), status.HTTP_400_BAD_REQUEST)
-            record = self.service.submit_duration_category(**serializer.data)
+            record = self.service.submit_duration_category(request, **serializer.data)
             return Response(prepare_success_response("Record saved."), status.HTTP_201_CREATED)
         except APIException as e :
             return Response(prepare_error_response(str(e)), e.status_code)
