@@ -32,3 +32,5 @@ class Participant(models.Model) :
 
     participant_question_answer = models.JSONField(null=True, blank=True)
 
+    prioritas_kategori = models.JSONField(null=True, blank=True)
+

@@ -25,3 +25,5 @@ class UpdateParticipantSerializer(serializers.Serializer) :
 
     participant_question_answer = serializers.ListField(required=False)
 
+    prioritas_kategori = serializers.JSONField(required=False)
+
